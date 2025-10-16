@@ -1,0 +1,520 @@
+/* Page wrapper (replaces the <body> styles) */
+.tg-loader-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4a2c0f 0%, #8b5a2b 50%, #4a2c0f 100%);
+  overflow: hidden;
+  font-family: "Georgia", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loader-container {
+  text-align: center;
+  position: relative;
+}
+
+/* Glowing background effect */
+.glow-background {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 215, 0, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+/* Rotating gem symbol */
+.symbol-container {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 40px;
+  perspective: 1000px;
+}
+
+.rotating-symbol {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  height: 150px;
+  transform-style: preserve-3d;
+  animation: rotateY 3s linear infinite;
+}
+
+@keyframes rotateY {
+  from {
+    transform: translate(-50%, -50%) rotateY(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotateY(360deg);
+  }
+}
+
+/* 3D Diamond Gem - Classic Cut */
+.gem {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120px;
+  height: 120px;
+  transform-style: preserve-3d;
+}
+
+/* Diamond Top Crown - Upper facets */
+.gem-crown {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-bottom: 30px solid #ffd700;
+  filter: brightness(1.6) drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Table facet - Top flat surface */
+.gem-table {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 8px;
+  background: linear-gradient(90deg, #fff9e6, #ffd700, #fff9e6);
+  clip-path: polygon(15% 0%, 85% 0%, 100% 100%, 0% 100%);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+  animation: shimmer 2s ease-in-out infinite 0.1s;
+  z-index: 5;
+}
+
+/* Girdle - Middle widest part */
+.gem-girdle {
+  position: absolute;
+  top: 42px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 15px;
+  background: linear-gradient(
+    90deg,
+    #d4af37 0%,
+    #ffd700 20%,
+    #fff9e6 40%,
+    #ffd700 50%,
+    #fff9e6 60%,
+    #ffd700 80%,
+    #d4af37 100%
+  );
+  clip-path: polygon(15% 0%, 85% 0%, 100% 50%, 85% 100%, 15% 100%, 0% 50%);
+  box-shadow:
+    0 0 40px rgba(255, 215, 0, 1),
+    0 0 60px rgba(255, 215, 0, 0.5),
+    inset 0 0 20px rgba(255, 255, 255, 0.4);
+  animation: shimmer 2s ease-in-out infinite 0.2s;
+}
+
+/* Pavilion - Lower facets forming triangle */
+.gem-pavilion {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  border-left: 45px solid transparent;
+  border-right: 45px solid transparent;
+  border-top: 50px solid #d4af37;
+  filter: brightness(1.3) drop-shadow(0 0 25px rgba(255, 215, 0, 0.7));
+  animation: shimmer 2s ease-in-out infinite 0.3s;
+}
+
+/* Culet - Bottom point */
+.gem-culet {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background: #b8860b;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  animation: shimmer 2s ease-in-out infinite 0.4s;
+}
+
+/* Left facet highlight */
+.gem-facet-left {
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  width: 25px;
+  height: 70px;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  clip-path: polygon(0% 0%, 100% 30%, 100% 80%, 0% 100%);
+  animation: shimmer 2s ease-in-out infinite 0.15s;
+}
+
+/* Right facet highlight */
+.gem-facet-right {
+  position: absolute;
+  top: 20px;
+  right: 10px;
+  width: 25px;
+  height: 70px;
+  background: linear-gradient(240deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  clip-path: polygon(0% 30%, 100% 0%, 100% 100%, 0% 80%);
+  animation: shimmer 2s ease-in-out infinite 0.25s;
+}
+
+/* Central sparkle star */
+.gem-sparkle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #ffffff 0%, #ffd700 30%, transparent 70%);
+  border-radius: 50%;
+  animation: sparkleTop 1.5s ease-in-out infinite;
+  box-shadow:
+    0 0 40px rgba(255, 255, 255, 1),
+    0 0 60px rgba(255, 215, 0, 0.9);
+  z-index: 10;
+}
+
+/* Sparkle rays */
+.gem-sparkle::before,
+.gem-sparkle::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  transform: translate(-50%, -50%);
+}
+
+.gem-sparkle::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+@keyframes sparkleTop {
+  0%,
+  100% {
+    opacity: 0.8;
+    transform: translateX(-50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1.3);
+  }
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    filter: brightness(1.3) drop-shadow(0 0 25px rgba(255, 215, 0, 0.8));
+  }
+  50% {
+    filter: brightness(2) drop-shadow(0 0 50px rgba(255, 215, 0, 1));
+  }
+}
+
+/* SVG Text with stroke animation */
+.text-container {
+  position: relative;
+  margin-top: 20px;
+}
+
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.svg-main {
+  height: 120px;
+}
+
+.svg-subtitle {
+  height: 70px;
+}
+
+.svg-tagline {
+  height: 50px;
+}
+
+.text-stroke {
+  font-family: "Georgia", serif;
+  font-size: 48px;
+  font-weight: bold;
+  fill: none;
+  stroke: #ffd700;
+  stroke-width: 2;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.8));
+}
+
+.text-fill {
+  font-family: "Georgia", serif;
+  font-size: 48px;
+  font-weight: bold;
+  fill: #ffd700;
+  opacity: 0;
+  animation: fillText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+}
+
+.text-stroke-small {
+  font-family: "Georgia", serif;
+  font-size: 32px;
+  font-weight: bold;
+  fill: none;
+  stroke: #ffd700;
+  stroke-width: 1.5;
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  animation: drawText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+}
+
+.text-fill-small {
+  font-family: "Georgia", serif;
+  font-size: 32px;
+  font-weight: bold;
+  fill: #ffd700;
+  opacity: 0;
+  animation: fillText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+}
+
+.text-stroke-tiny {
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  font-weight: normal;
+  fill: none;
+  stroke: #ffd700;
+  stroke-width: 1;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  animation: drawText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.8));
+}
+
+.text-fill-tiny {
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  font-weight: normal;
+  fill: #ffd700;
+  opacity: 0;
+  animation: fillText 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.6));
+}
+
+@keyframes drawText {
+  0% {
+    stroke-dashoffset: 1000;
+  }
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1000;
+  }
+}
+
+@keyframes fillText {
+  0%,
+  40% {
+    opacity: 0;
+  }
+  50%,
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Rotating shine effect */
+.shine-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.shine-ray {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 150px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 215, 0, 0.6),
+    transparent
+  );
+  transform-origin: 50% 0%;
+  animation: rotateRays 3s linear infinite;
+}
+
+.shine-ray:nth-child(2) {
+  transform: rotate(60deg);
+  animation-delay: -0.5s;
+}
+.shine-ray:nth-child(3) {
+  transform: rotate(120deg);
+  animation-delay: -1s;
+}
+.shine-ray:nth-child(4) {
+  transform: rotate(180deg);
+  animation-delay: -1.5s;
+}
+.shine-ray:nth-child(5) {
+  transform: rotate(240deg);
+  animation-delay: -2s;
+}
+.shine-ray:nth-child(6) {
+  transform: rotate(300deg);
+  animation-delay: -2.5s;
+}
+
+@keyframes rotateRays {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Loading dots */
+.loading-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: bounce 1.4s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+.dot:nth-child(1) {
+  animation-delay: 0s;
+}
+.dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes bounce {
+  0%,
+  80%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  40% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: sparkle 3s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 1);
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.sparkle:nth-child(1) {
+  top: 20%;
+  left: 15%;
+  animation-delay: 0s;
+}
+.sparkle:nth-child(2) {
+  top: 30%;
+  right: 20%;
+  animation-delay: 0.5s;
+}
+.sparkle:nth-child(3) {
+  bottom: 25%;
+  left: 25%;
+  animation-delay: 1s;
+}
+.sparkle:nth-child(4) {
+  bottom: 35%;
+  right: 15%;
+  animation-delay: 1.5s;
+}
+.sparkle:nth-child(5) {
+  top: 50%;
+  left: 10%;
+  animation-delay: 2s;
+}
+.sparkle:nth-child(6) {
+  top: 60%;
+  right: 10%;
+  animation-delay: 2.5s;
+}
